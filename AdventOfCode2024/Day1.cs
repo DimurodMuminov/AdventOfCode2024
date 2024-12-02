@@ -1,5 +1,6 @@
 ﻿internal class Program1
 {
+    //Day 1
     private static void main()
     {
         int result = ReadData1();
@@ -7,7 +8,7 @@
         Console.WriteLine(result);
         Console.WriteLine("-------------------");
     }
-
+    
     private static int ReadData1()
     {
         int result=0;
