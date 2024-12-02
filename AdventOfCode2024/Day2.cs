@@ -15,9 +15,9 @@
         int count = 0;
         string filePath = "input.txt";
         
-        //Part 1
         try
         {
+            
             bool safe=true;
             bool increased=false,decrased=false;
 
@@ -34,6 +34,8 @@
                         report[i]=int.Parse(arr[i]);
                     }
 
+                    /*
+                    //Part 1
                     //checking
                     increased = false;
                     decrased = false;
@@ -69,10 +71,69 @@
                     if (safe)
                     {
                         count++;
+                    }*/
+
+
+                    //Part 2
+
+
+                    int rm_index = 0;
+
+                    while (rm_index < report.Length)
+                    {
+                        int[] report1= new int[report.Length-1];
+                        int j = 0;
+
+                        for(int i=0; i<report.Length;i++)
+                        {
+                            if(i!=rm_index)
+                            {
+                                report1[j]=report[i];
+                                j++;
+                            }
+                        }
+                        rm_index++;
+
+                        increased = false;
+                        decrased = false;
+                        safe = true;
+
+                        for (int i = 0; i < report1.Length - 1; i++)
+                        {
+                            if (Math.Abs(report1[i] - report1[i + 1]) > 3 || report1[i] == report1[i + 1])
+                            {
+                                safe = false;
+                                break;
+                            }
+                            if (report1[i] < report1[i + 1])
+                            {
+                                increased = true;
+                            }
+                            else
+                            {
+                                decrased = true;
+                            }
+
+                            if (increased && decrased)
+                            {
+                                safe = false;
+                                break;
+                            }
+
+                            if (safe == false)
+                            {
+                                break;
+                            }
+                        }
+                        if (safe)
+                        {
+                            count++;
+                            break;
+                        }
                     }
                 }
             }
-
+        
         }
         catch
         {
